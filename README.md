@@ -18,12 +18,12 @@ The *modular group* is the set of 2x2 matrcies with integer entries and determin
 
   $$
   SL_2(\mathbb{Z}) =
-  \left \{
+  \left \lbrace
   \begin{pmatrix}
   a & b\\
   c & d
   \end{pmatrix}\;|\;a,b,c,d\in \mathbb{Z};, \;ad - bc = 1
-  \right \}.
+  \right \rbrace.
   $$
 
 Here, SL₂(ℤ) stands for *Special Linear Group* of dimension 2 over the integers. An alternative characterization of the Modular group is as the set of integer fractional linear transformations, FLT(ℤ), of the form
