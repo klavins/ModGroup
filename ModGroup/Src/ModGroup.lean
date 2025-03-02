@@ -22,7 +22,7 @@ The *modular group* is the set of 2x2 matrcies with integer entries and determin
   \begin{pmatrix}
   a & b\\
   c & d
-  \end{pmatrix}\;|\;a,b,c,d\in \mathbb{Z} \;\wedge\;ad - bc = 1
+  \end{pmatrix}\;|\;a,b,c,d\in \mathbb{Z};, \;ad - bc = 1
   \right \}.
   $$
 
