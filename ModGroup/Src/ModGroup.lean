@@ -92,7 +92,7 @@ end Temp
 
 #check (⟨!![1,1;0,1], rfl⟩ : SL2)
 
-/- And of course if we do not supply an integer matrix or a determinant 1 matrix, the construction fails. -/
+/- If we do not supply an integer matrix or a determinant 1 matrix, the construction fails. -/
 
 #check_failure SL2.mk !![(a:ℝ),1;1,0]
 #check_failure SL2.mk !![1,1;1,1]
@@ -210,7 +210,7 @@ $$
  i\frac{(ad-bc)y}{(cx+d)^2+(cy)^2}.
 $$
 
-Since $ad+bc = 1$, we conclude that $(cx+d)^2+(cy)^2>0$ and $(ad+bc)y>0$. The proof of this shows up in Lib/FLT.lean, is 60 lines long, and uses about 14 helper lemmas defined several hundred lines of code. Clearly, there is room for improvement.
+Since $ad+bc = 1$, we conclude that $(cx+d)^2+(cy)^2>0$ and $(ad+bc)y>0$. The proof of this is contained in Lib/FLT.lean, is 60 lines long, and uses about 14 helper lemmas defined several hundred lines of code. Clearly, there is room for improvement.
 
  ## USING FLTs
 
