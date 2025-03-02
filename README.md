@@ -32,7 +32,7 @@ Here, SL₂(ℤ) stands for *Special Linear Group* of dimension 2 over the integ
     z \mapsto \frac{az+b}{cz+d}
    $$
 
-where $a$, $b$, $c$ and $d$ are integers, $a*c - b*d = 1$ and $z \in \mathbb{C}$ with $\mathrm{im}(z) > 0$. In this case, the group operation is function composition. This latter characterization provides an incredibly rich relationship between the integers and the complex numbers.
+where $a$, $b$, $c$ and $d$ are integers, $ac - bd = 1$ and $z \in \mathbb{C}$ with $\mathrm{im}(z) > 0$. In this case, the group operation is function composition. This latter characterization provides an incredibly rich relationship between the integers and the complex numbers.
 
 In this project, we show the following in Lean 4:
 
