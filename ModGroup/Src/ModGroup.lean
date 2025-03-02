@@ -105,7 +105,7 @@ Two distinguished elements in SL2 are the following matrices:
   T = \begin{pmatrix}
   1 & 1\\
   1 & 0
-  \end{pmatrix} \; \; \mathrm{and} \; \;
+  \end{pmatrix} \;\; \mathrm{and} \;\;
   W = \begin{pmatrix}
   0 & -1\\
   1 & 0
