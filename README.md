@@ -175,7 +175,7 @@ example (A B C : SL2) : A * (B * C) * (A * C)⁻¹ * (A * B * A⁻¹)⁻¹ = 1 :
 ```
  # Fractional Linear Transformations
 
-As described above, an fractional linear transformation has the form
+As described above, a fractional linear transformation has the form
 
    $$
     z \mapsto \frac{az+b}{cz+d}.
