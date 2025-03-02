@@ -262,3 +262,12 @@ theorem flt_sl2_group_iso (f g : FLT) : fl_to_sl2 f * fl_to_sl2 g = fl_to_sl2 (f
   apply Eq.symm
   rw[←fl_comp_sl2_iff]
 ```
+ # Group Generators
+
+TODO: Show that $T$ and $S$ generated SL2.
+
+ # Conclusion
+
+TODO: Re-describe your aim, what you achieved, and what is left to be done if anything. Also describe your current understanding of how well Lean and Mathlib support the area of mathematics you chose to explore, and what would be needed to fully support it.
+
+
