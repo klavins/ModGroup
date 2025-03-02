@@ -108,7 +108,7 @@ Two distinguished elements in SL2 are the following matrices:
   W = \begin{pmatrix}
   0 & -1\\
   1 & 0
-  \end{pmatrix}
+  \end{pmatrix}.
   $$
 
 These elements are said to *generate* SL2, because every element of SL2 can be formed from a combination of $T$, $S$ and their inverses, although -- sadly -- we do not (yet) prove this fact in this project.  

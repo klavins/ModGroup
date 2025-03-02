@@ -109,7 +109,7 @@ Two distinguished elements in SL2 are the following matrices:
   W = \begin{pmatrix}
   0 & -1\\
   1 & 0
-  \end{pmatrix}
+  \end{pmatrix}.
   $$
 
 These elements are said to *generate* SL2, because every element of SL2 can be formed from a combination of $T$, $S$ and their inverses, although -- sadly -- we do not (yet) prove this fact in this project.  -/
@@ -174,7 +174,7 @@ example (A B C : SL2) : A * (B * C) * (A * C)⁻¹ * (A * B * A⁻¹)⁻¹ = 1 :
 
 /- # Fractional Linear Transformations
 
-As described above, an fractional linear transformation has the form
+As described above, a fractional linear transformation has the form
 
    $$
     z \mapsto \frac{az+b}{cz+d}.
