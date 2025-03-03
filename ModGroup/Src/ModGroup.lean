@@ -42,11 +42,11 @@ In this project, we show the following in Lean 4:
 
 To acheive this goal, we define three new types:
 
-- `SL2` to represent the 2x2 special linear group over the integers and defined in Lib/SL2.lean
-- `UHP` to represent the upper half of the complex plane and defined in Lib/UHP.lean
-- `FLT` to represent integer valued fractional linear transformations, defined in Lib/FLT.lean
+- `SL2` to represent the 2x2 special linear group over the integers and defined in [Lib/SL2.lean](./ModGroup/Lib/SL2.lean)
+- `UHP` to represent the upper half of the complex plane and defined in [Lib/UHP.lean](./ModGroup/Lib/UHP.lean)
+- `FLT` to represent integer valued fractional linear transformations, defined in [Lib/FLT.lean](./ModGroup/Lib/FLT.lean)
 
-I also built a library of helpers for basic manipmulations and coercions of complex numbers, which can be found in Lib/Complex.Lib. All of the above types rely on Mathlib and in particular the encoding of Complex Numbers, Matrices, Linear Algebra, and Groups. And of course, Mathlib's Tactics library is used extensively for the proofs. -/
+We also built a library of helpers for basic manipmulations and coercions of complex numbers, which can be found in [Lib/Complex](./ModGroup/Lib/Complex.lean).Lib. All of the above types rely on Mathlib and in particular the encoding of Complex Numbers, Matrices, Linear Algebra, and Groups. And of course, Mathlib's Tactics library is used extensively for the proofs. -/
 
 import ModGroup.Lib.Complex
 import ModGroup.Lib.UHP
@@ -266,16 +266,15 @@ theorem bijective_sl2_to_fl : Function.Bijective sl2_to_fl := by
 
 /- ## FLT and SL2 are Isomorphic
 
-To show the precise form of the fact that group operation is preserved by the bijection, we use a theorem proved in Lib/FLT.lean.  -/
+To show the precise form of the fact that group operation is preserved by the bijection, we use a theorem we proved in Lib/FLT.lean.  -/
 
 theorem flt_sl2_group_iso (f g : FLT) : fl_to_sl2 f * fl_to_sl2 g = fl_to_sl2 (f*g) := by
   apply Eq.symm
   rw[←fl_comp_sl2_iff]
 
-
 /- # Group Generators
 
-TODO: Show that $T$ and $S$ generated SL2.
+TODO: Show that $T$ and $S$ generate SL2.
 -/
 
 /- # Conclusion
