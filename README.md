@@ -138,12 +138,10 @@ Elements in SL2 can be coerced to matrices so that one does not need to write, f
 #check S*T
 #check S 0 0
 ```
+ ## Operations on Elements of SL2
 
+Elements in SL2 hav all the same properties as invertible 2x2 matrices, including multiplication, inverses, and a distinguished identity element.  
 ```hs
-## Operations on Elements of SL2
-
-Elements in SL2 hav all the same properties as invertible 2x2 matrices, including multiplication, inverses, and a distinguished identity element.  -/
-
 #check S*T
 #eval S*T
 #check T⁻¹
