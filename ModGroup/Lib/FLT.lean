@@ -13,7 +13,6 @@ structure FLT where                        -- TODO: a general FLT class would
   d : ℤ
   det1 : a*d - b*c = 1 := by decide
 
-
 /- ## First Goal : FLT's preserve UHP
 
 Our first goal is to define the map $z \mapsto (az+b)/(cz+d)$ and show it takes $z:UHP$ to $z:UHP$. A proof of this statement can be found [here](https://public.websites.umich.edu/~hlm/nzm/modgp.pdf). The proof is basically algebra, but there are a number of steps that a computer needs to understand before you can just crank through the equations.
@@ -113,8 +112,6 @@ def fl_map (f : FLT) (z : UHP) : UHP := ⟨ (f.a*z + f.b)/(f.c*z + f.d), by
 
 /- Here is an example showing the use of the map. Note that it would throw a type error if the output of fl_map were not in UHP. So this short statement actually packs a lot of information into it. -/
 
-
-
 /- ## FLT is a group
 
 Now we can start proving FLT is a group!
@@ -160,7 +157,7 @@ theorem fl_eq_imp_sl2_eq (f g : FLT): f = g → fl_to_sl2 f = fl_to_sl2 g := by
   obtain ⟨ ha, hb, hc, hd ⟩ := hfg
   simp[fl_to_sl2,ha,hb,hc,hd]
 
-def fl_comp (f g : FLT) : FLT :=
+def fl_comp (f g : FLT) : FLT := -- TODO: CHECK THIS!!!
   let A := fl_to_sl2 f
   let B := fl_to_sl2 g
   let AB := A*B
@@ -168,6 +165,40 @@ def fl_comp (f g : FLT) : FLT :=
     have h := AB.det1
     simp[Matrix.det_fin_two] at h
     exact h ⟩
+
+theorem cancel_dens {a b c d x y : ℂ}
+  : y ≠ 0 → (a*(x/y) + b*y/y)/(c*(x/y)+d*y/y) = (a*x+b*y)/(c*x+d*y):= by
+  intro h
+  field_simp
+
+/- Check that fl_comp as defined above with matrix multiplication is equivalen to actual function composition. -/
+example (f g: FLT): fl_comp f g = f ∘ g := by
+
+  simp[fl_comp,fl_map,fl_to_sl2]
+  funext x
+  simp
+
+  have hf := den_nz f x (uhp_im_nz x)
+  have hg := den_nz g x (uhp_im_nz x)
+
+  have : (↑g.c * x.z + ↑g.d) / (↑g.c * x.z + ↑g.d) = 1 := by
+    apply div_self; exact hg
+
+  have hfb : f.b = f.b * (↑g.c * x.z + ↑g.d) / (↑g.c * x.z + ↑g.d) := by
+    exact Eq.symm (mul_div_cancel_right₀ (↑f.b) hg)
+
+  have hfd : f.d = f.d * (↑g.c * x.z + ↑g.d) / (↑g.c * x.z + ↑g.d) := by
+    exact Eq.symm (mul_div_cancel_right₀ (↑f.d) hg)
+
+  conv =>
+    rhs
+    rw[hfb,hfd]
+
+  conv =>
+    rhs
+    rw[cancel_dens hg]
+
+  ring
 
 noncomputable
 def fl_inv (f : FLT) : FLT :=

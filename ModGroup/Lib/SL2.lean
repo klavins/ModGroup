@@ -135,7 +135,7 @@ theorem sl2_one_simp_right : ∀ A : SL2, A * 1 = A := by
   intro A
   simp
 
-instance inst_mul_one : MulOneClass SL2 :=
+instance sl2_inst_mul_one : MulOneClass SL2 :=
   ⟨ sl2_one_simp_left, sl2_one_simp_right ⟩
 
 /- ## Inverse theorems and Group
@@ -157,3 +157,5 @@ theorem sl2_inv_simp_right : ∀ A : SL2, A * A⁻¹ = 1 := by
 noncomputable
 instance inst_mod_group : Group SL2 :=
   @Group.ofLeftAxioms SL2 _ _ _ sl2_mul_assoc sl2_one_simp_left sl2_inv_simp_left
+
+/- ## Other instances -/
