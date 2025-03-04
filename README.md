@@ -47,6 +47,8 @@ To acheive this goal, we define three new types:
 - `UHP` to represent the upper half of the complex plane and defined in [Lib/UHP.lean](./ModGroup/Lib/UHP.lean)
 - `FLT` to represent integer valued fractional linear transformations, defined in [Lib/FLT.lean](./ModGroup/Lib/FLT.lean)
 
+Note that the Modular Group is the set of transformations above, not the set of matrices in what we are calling SL2. To be perfectly correct, the modular group is the quotient $SL_2(\mathbb{Z})/(\pm I)$, that is where we identify $I$ and $-I$. We do not (yet) make that distinction in this project.
+
 We also built a library of helpers for basic manipmulations and coercions of complex numbers, which can be found in [Lib/Complex](./ModGroup/Lib/Complex.lean).Lib. All of the above types rely on Mathlib and in particular the encoding of Complex Numbers, Matrices, Linear Algebra, and Groups. And of course, Mathlib's Tactics library is used extensively for the proofs. 
 ```hs
 import ModGroup.Lib.Complex
