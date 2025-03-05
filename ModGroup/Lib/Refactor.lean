@@ -12,6 +12,8 @@ import Mathlib.LinearAlgebra.Matrix.SpecialLinearGroup
 import Mathlib.Data.Finset.Basic
 import Mathlib.GroupTheory.Coset.Defs
 
+import Modgroup.Lib.UHP
+
 /- We abbreviate SL2 and define the distinguished elements that will serve as generators later. -/
 
 abbrev SL2 := Matrix.SpecialLinearGroup (Fin 2) ℤ
@@ -79,3 +81,45 @@ instance normal : Subgroup.Normal IMI :=
 
 #check Tq*Tq
 #check get_one (SL2⧸IMI)
+
+#check Tq
+
+/- The fractional linear transformation associated with a member M of SL2⧸IMI can be defined by first defining the map on SL2 and then lifting it. Here is the map: -/
+
+noncomputable
+def pre_flt_map (A : SL2) : UHP → UHP := λ z => ⟨
+  ((A 0 0)*z + (A 0 1)) / ((A 1 0)*z + (A 1 1)),
+  sorry
+⟩
+
+/- Lifting a map requires proof that all elements of an equivalence class produce the same map. -/
+
+theorem pre_flt_map_respects (A B : SL2) (h : QuotientGroup.leftRel IMI A B) : pre_flt_map A = pre_flt_map B := by
+  funext z
+  rw[QuotientGroup.leftRel_apply] at h
+  apply Or.elim h
+  . intro h1
+    have : B = A := by
+      calc B
+      _  = 1 * B := by simp
+      _  = A * (A⁻¹ * B) := by simp
+      _  = A * 1 := by rw[←h1]
+      _ = _ := by simp
+    rw[this]
+  . intro h1
+    have : B = -A := by
+      calc B
+      _  = 1 * B := by simp
+      _  = A * (A⁻¹ * B) := by simp
+      _  = A * (-1) := by rw[←h1]
+      _ = _ := by simp
+    simp[this,pre_flt_map]
+    have : (-((A 0 0) * z.z) + -(A 0 1)) = -(((A 0 0) * z.z) + (A 0 1)) := by ring
+    rw[this]
+    have : (-((A 1 0) * z.z) + -(A 1 1)) = -(((A 1 0) * z.z) + (A 1 1)) := by ring
+    rw[this,neg_div_neg_eq]
+
+/- Now we can define the lifted map. Et voila. -/
+
+noncomputable
+def flt_map (A : SL2 ⧸ IMI) : UHP → UHP := Quot.lift pre_flt_map pre_flt_map_respects A

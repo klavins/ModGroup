@@ -73,8 +73,6 @@ The mathematics of modular groups can be found in a variety of places. I have ma
 - Hugh Montgomery's notes on fractional linear transformations, which can be found [here](https://public.websites.umich.edu/~hlm/nzm/modgp.pdf).
 - Ben Brubaker's [Notes](https://math.mit.edu/~brubaker/Math784/modular.pdf) on Modular forms.
 
-
-
 The source code for this README is in Src/ModGroup.lean and was turned into Markdown using
 
 ```bash
@@ -83,9 +81,7 @@ python3 ./ModGroup/Doc/dm.py ./ModGroup/Src/ModGroup.lean > README.md
 
  # SL2
 
-The `SL2` type is definied as a structure containing a 2x2 integer matrix and a proof that it has determinant one. In Lean this is expressed as follows (we use a temporary namespace to avoid naming conflicts):
-
-
+The `SL2` type is definied as a structure containing a 2x2 integer matrix and a proof that it has determinant one. In Lean this is expressed as follows (we use a temporary namespace to avoid naming conflicts): 
 ```hs
 namespace Temp
 
