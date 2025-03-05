@@ -5,7 +5,9 @@ In this file we define the modular group using the following Mathlib data struct
   * Matrix.SpecialLinearGroup (Fin 2) ℤ. We abbreviate this type by SL2. It is the 2x2 integer matricies with determinant 1
   * Subgroup. We define the set containing I and -I and show it its a subgroup of SL2.
   * SL2⧸IMI. The quotient type where A ≃ -A for all A in SL2.
-  * Subgroup.normal : Instantiates SL2⧸IMI as a group by showing that IMI is a *normal* subgroup (meaning it's elements are invariant under conjugation) -/
+  * Subgroup.normal : Instantiates SL2⧸IMI as a group by showing that IMI is a *normal* subgroup (meaning it's elements are invariant under conjugation)
+
+-/
 
 import Mathlib.tactic
 import Mathlib.LinearAlgebra.Matrix.SpecialLinearGroup
