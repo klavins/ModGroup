@@ -47,7 +47,13 @@ To acheive this goal, we define three new types:
 - `UHP` to represent the upper half of the complex plane and defined in [Lib/UHP.lean](./ModGroup/Lib/UHP.lean)
 - `FLT` to represent integer valued fractional linear transformations, defined in [Lib/FLT.lean](./ModGroup/Lib/FLT.lean)
 
-Note that the Modular Group is the set of transformations above, not the set of matrices in what we are calling SL2. To be perfectly correct, the modular group is the quotient $SL_2(\mathbb{Z})/(\pm I)$, that is where we identify $I$ and $-I$. We do not (yet) make that distinction in this project.
+Note that this project is an exercise to make sure we understand Lean's class/instance machinery. In fact, our definition here could have been made using using Mathlib via:
+
+```hs
+#check Matrix.SpecialLinearGroup (Fin 2) ℤ
+```
+
+Note also that the Modular Group is the set of transformations above, not the set of matrices in what we are calling SL2. To be perfectly correct, the modular group is the quotient $SL_2(\mathbb{Z})/(\pm I)$, that is where we identify $I$ and $-I$. An unfinished refactoring of this project, which makes this distinction is is somewhat more elegant in general, can be found in [this file](./ModGroup/Lib/Refactor.lean)
 
 We also built a library of helpers for basic manipmulations and coercions of complex numbers, which can be found in [Lib/Complex](./ModGroup/Lib/Complex.lean).Lib. All of the above types rely on Mathlib and in particular the encoding of Complex Numbers, Matrices, Linear Algebra, and Groups. And of course, Mathlib's Tactics library is used extensively for the proofs. 
 ```hs
@@ -250,7 +256,11 @@ In Lib/FLT.lean, we define to maps: `fl_to_sl2` and `sl2_to_fl` that serve as wi
 #check sl2_map_map   -- sl2_to_fl ∘ fl_to_sl2 = id
 #check fl_map_map    -- fl_to_sl2 ∘ sl2_to_fl = id
 ```
- ## Bijective
+
+
+***ISSUE*** This isn't quite right. The transformations $z \mapsto \frac{az+b}{cz+d}$ and $z \mapsto \frac{-az-b}{-cz-d}$ do the same thing, but corresponding matrices are different. So we need to really take the quotient by the equivalence $I=-I$.
+
+## Bijective
 
 Either one of these facts is enough to show a function is a bijection. Lean provides the necessary definitions and theorems in the Prelude.  
 ```hs
@@ -278,6 +288,7 @@ theorem flt_sl2_group_iso (f g : FLT) : fl_to_sl2 f * fl_to_sl2 g = fl_to_sl2 (f
  # Group Generators
 
 TODO: Show that $T$ and $S$ generate SL2. Progress can be found [here](./ModGroup/Lib/Generators.lean).
+
 
  # Conclusion
 

@@ -138,7 +138,7 @@ theorem sl2_one_simp_right : ∀ A : SL2, A * 1 = A := by
 instance sl2_inst_mul_one : MulOneClass SL2 :=
   ⟨ sl2_one_simp_left, sl2_one_simp_right ⟩
 
-/- ## Inverse theorems and Group
+/- ## Inverse theorems and Group instance
 
 Finally, we show that SL2 forms a group. The last ingredient is to show that inverses are well behaved.  -/
 
